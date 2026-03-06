@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐会检索系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>音乐会检索系统</h1>
+        
+        <div class="controls">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-type" style="margin-bottom: 10px;">
+                    <label style="margin-right: 15px;"><input type="radio" name="search-type" value="track" checked> 按曲目搜索</label>
+                    <label><input type="radio" name="search-type" value="title"> 按标题搜索</label>
+                </div>
+                <input type="text" id="track-search" placeholder="输入搜索内容...">
+                <button onclick="applyFilters()">搜索</button>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>城市:</label>
+                    <select id="city-filter">
+                        <option value="">所有城市</option>
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>时间段:</label>
+                    <input type="date" id="date-start">
+                    <span>至</span>
+                    <input type="date" id="date-end">
+                </div>
+
+                <div class="filter-group">
+                    <label>票价范围 (CNY):</label>
+                    <input type="number" id="price-min" placeholder="最低价">
+                    <span>-</span>
+                    <input type="number" id="price-max" placeholder="最高价">
+                </div>
+            </div>
+
+            <!-- Sort Section -->
+            <div class="sort-section">
+                <label>排序:</label>
+                <select id="sort-order" onchange="applyFilters()">
+                    <option value="time-asc">时间 (从早到晚)</option>
+                    <option value="time-desc">时间 (从晚到早)</option>
+                    <option value="price-asc">最低票价 (从低到高)</option>
+                    <option value="price-desc">最低票价 (从高到低)</option>
+                </select>
+            </div>
+            
+            <button class="reset-btn" onclick="resetFilters()">重置所有条件</button>
+        </div>
+
+        <div id="results-count"></div>
+        <div id="concert-list" class="concert-list">
+            <!-- Results will appear here -->
+        </div>
+        <div id="pagination-controls" class="pagination-controls" style="text-align: center; margin-top: 20px;">
+            <!-- Pagination will appear here -->
+        </div>
+        <div id="last-update" style="text-align: center; margin-top: 40px; color: #666; font-size: 0.9em;">
+            <!-- Update date will appear here -->
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
