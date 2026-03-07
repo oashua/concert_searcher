@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版本更新历史 - 音乐会检索系统</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .changelog-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .changelog-item {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            background-color: #fcfcfc;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-right: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+        .version-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 0 5px 0;
+        }
+        .version-date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+        }
+        .version-details ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .version-details li {
+            margin-bottom: 5px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg style="margin-right: 5px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            返回音乐会检索主页
+        </a>
+        
+        <h1 style="margin-bottom: 30px; text-align: left;">版本更新历史</h1>
+        
+        <ul class="changelog-list">
+            <li class="changelog-item">
+                <div class="version-title">v1.1.0 (当前版本)</div>
+                <div class="version-date">发布日期: 2026-03-07</div>
+                <div class="version-details">
+                    <ul>
+                        <li>✨ 顶部导航栏新增了项目的官方 Bilibili 宣传视频与 GitHub 直达链接入口。</li>
+                        <li>🚀 全面调整了移动端响应式布局，修复了在手机访问时搜索组件及按钮被挤压错位的问题。</li>
+                        <li>📝 新增了项目介绍（README.md）及《版本更新历史》界面，方便用户跟踪了解最新变动情况。</li>
+                        <li>🎨 优化了图标（SVG）细节属性问题（B站图标微调避免裁切）。</li>
+                    </ul>
+                </div>
+            </li>
+            
+            <li class="changelog-item">
+                <div class="version-title">v1.0.0</div>
+                <div class="version-date">发布日期: 2026-03-06</div>
+                <div class="version-details">
+                    <ul>
+                        <li>🎉 正式上线独立音乐会检索系统的前端页面，完成初版界面及配套逻辑构建。</li>
+                        <li>🔍 首创实现“按标题搜索”和“按曲目搜索”切换，以及对包含被检索关键词的曲目进行了高亮设计。</li>
+                        <li>📊 列表增加查询结果自适应分页支持，满 10 条结果将自动处理为折行翻页。</li>
+                        <li>📅 配置强效正则解析功能，精准解析提取时间段（例如 2026.04.11-04.12 等），修复前端多维度排序逻辑（按时间早晚、票价高低均可正常运行）。</li>
+                        <li>🤖 底层架构（Python src）使用阿里通义千问 Qwen 大模型及多线程方案抓取并抽取大麦网详细内容信息自动拼接更新 <code>data.js</code> 数据。</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -32,7 +32,21 @@ h1 {
 .search-section {
     margin-bottom: 20px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        flex-direction: column;
+    }
+    
+    .top-nav {
+        position: static !important;
+        justify-content: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
 }
 
 .search-section input {
