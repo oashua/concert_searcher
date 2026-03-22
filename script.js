@@ -6,7 +6,15 @@ const itemsPerPage = 10;
 document.addEventListener('DOMContentLoaded', () => {
     // Load data from global variable dbData (defined in data.js)
     if (typeof dbData !== 'undefined') {
-        allConcerts = dbData;
+        const now = new Date();
+        // 载入时过滤掉结束时间早于当前时间的此项
+        now.setHours(0, 0, 0, 0); // 取今日凌晨，或者不设置直接用当前精确时间
+        
+        allConcerts = dbData.filter(concert => {
+            const timeInfo = parseTimeInfo(concert.time);
+            return timeInfo.endDate >= new Date(); // endDate必须晚于等于当前时间
+        });
+        
         initialize();
     } else {
         console.error('dbData is not defined. Make sure data.js is loaded.');
@@ -62,14 +70,15 @@ function getFilterValues() {
 }
 
 function parseTimeInfo(timeStr) {
-    if (!timeStr) return { parsedDisplay: '未知时间', startDate: new Date(0) };
+    if (!timeStr) return { parsedDisplay: '未知时间', startDate: new Date(0), endDate: new Date(0) };
 
     const rangeMatch = timeStr.match(/(20\d\d)\.(\d\d)\.(\d\d)-(\d\d)\.(\d\d)/);
     if (rangeMatch) {
         const year = rangeMatch[1];
         return {
             parsedDisplay: `${year}.${rangeMatch[2]}.${rangeMatch[3]} - ${year}.${rangeMatch[4]}.${rangeMatch[5]}`,
-            startDate: new Date(`${year}-${rangeMatch[2]}-${rangeMatch[3]}T00:00:00`)
+            startDate: new Date(`${year}-${rangeMatch[2]}-${rangeMatch[3]}T00:00:00`),
+            endDate: new Date(`${year}-${rangeMatch[4]}-${rangeMatch[5]}T23:59:59`)
         };
     }
 
@@ -77,7 +86,8 @@ function parseTimeInfo(timeStr) {
     if (singleMatch) {
         return {
             parsedDisplay: `${singleMatch[1]}.${singleMatch[2]}.${singleMatch[3]}`,
-            startDate: new Date(`${singleMatch[1]}-${singleMatch[2]}-${singleMatch[3]}T00:00:00`)
+            startDate: new Date(`${singleMatch[1]}-${singleMatch[2]}-${singleMatch[3]}T00:00:00`),
+            endDate: new Date(`${singleMatch[1]}-${singleMatch[2]}-${singleMatch[3]}T23:59:59`)
         };
     }
 
@@ -85,9 +95,14 @@ function parseTimeInfo(timeStr) {
     if (isNaN(fallbackDate.getTime())) {
         fallbackDate = new Date();
     }
+    
+    let fallbackEnd = new Date(fallbackDate.getTime());
+    fallbackEnd.setHours(23, 59, 59, 999);
+    
     return {
         parsedDisplay: timeStr,
-        startDate: fallbackDate
+        startDate: fallbackDate,
+        endDate: fallbackEnd
     };
 }
 
