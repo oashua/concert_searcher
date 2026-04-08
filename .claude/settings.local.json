@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -r \"import\\\\|from\" /d/DIY/concert_searcher/src/*.py)"
-    ]
-  }
-}
