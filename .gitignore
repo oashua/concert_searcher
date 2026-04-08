@@ -1,4 +1,6 @@
 data_update/
 src/
+imgs/
 __pycache__/
 *.pyc
+CLAUDE.md
