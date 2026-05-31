@@ -34,7 +34,7 @@ function initialize() {
     if (typeof updateDate !== 'undefined') {
         const updateDiv = document.getElementById('last-update');
         if (updateDiv) {
-            updateDiv.textContent = 鏁版嵁鏇存柊鏃堕棿: 2026-05-31;
+            updateDiv.textContent = `数据更新时间: 2026-03-22`;
         }
     }
     
@@ -277,4 +277,3 @@ function renderResults(concerts, highlightQuery, totalCount) {
         list.appendChild(div);
     });
 }
-

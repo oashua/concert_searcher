@@ -3,12 +3,12 @@
 
 repo_root="$(git rev-parse --show-toplevel)"
 
-if command -v pwsh >/dev/null 2>&1; then
-  pwsh -NoProfile -ExecutionPolicy Bypass -File "$repo_root/scripts/update-last-update.ps1"
-elif command -v powershell >/dev/null 2>&1; then
-  powershell -NoProfile -ExecutionPolicy Bypass -File "$repo_root/scripts/update-last-update.ps1"
+if command -v bash >/dev/null 2>&1; then
+  bash "$repo_root/scripts/update-last-update.sh"
+elif command -v sh >/dev/null 2>&1; then
+  sh "$repo_root/scripts/update-last-update.sh"
 else
-  echo "PowerShell not found; skip update-last-update.ps1"
+  echo "bash/sh not found; skip update-last-update.sh"
 fi
 
 git add "$repo_root/script.js"

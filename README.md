@@ -27,7 +27,7 @@
 git config core.hooksPath .githooks
 ```
 
-对应脚本位于 `scripts/update-last-update.ps1`。
+对应脚本位于 `scripts/update-last-update.sh`。
 
 ## 网站收录进度
 
