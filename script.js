@@ -1,4 +1,4 @@
-let allConcerts = [];
+﻿let allConcerts = [];
 let filteredConcerts = [];
 let currentPage = 1;
 const itemsPerPage = 10;
@@ -34,7 +34,7 @@ function initialize() {
     if (typeof updateDate !== 'undefined') {
         const updateDiv = document.getElementById('last-update');
         if (updateDiv) {
-            updateDiv.textContent = `数据更新时间: 2026-03-22`;
+            updateDiv.textContent = `\u6570\u636e\u66f4\u65b0\u65f6\u95f4: 2026-05-31`;
         }
     }
     
