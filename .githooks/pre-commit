@@ -3,12 +3,12 @@
 
 repo_root="$(git rev-parse --show-toplevel)"
 
-if command -v bash >/dev/null 2>&1; then
-  bash "$repo_root/scripts/update-last-update.sh"
-elif command -v sh >/dev/null 2>&1; then
-  sh "$repo_root/scripts/update-last-update.sh"
+if command -v python >/dev/null 2>&1; then
+  python "$repo_root/scripts/update-last-update.py"
+elif command -v python3 >/dev/null 2>&1; then
+  python3 "$repo_root/scripts/update-last-update.py"
 else
-  echo "bash/sh not found; skip update-last-update.sh"
+  echo "python not found; skip update-last-update.py"
 fi
 
 git add "$repo_root/script.js"
