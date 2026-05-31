@@ -1,0 +1,14 @@
+#!/bin/sh
+# Update script.js update date based on data.js timestamp
+
+repo_root="$(git rev-parse --show-toplevel)"
+
+if command -v pwsh >/dev/null 2>&1; then
+  pwsh -NoProfile -ExecutionPolicy Bypass -File "$repo_root/scripts/update-last-update.ps1"
+elif command -v powershell >/dev/null 2>&1; then
+  powershell -NoProfile -ExecutionPolicy Bypass -File "$repo_root/scripts/update-last-update.ps1"
+else
+  echo "PowerShell not found; skip update-last-update.ps1"
+fi
+
+git add "$repo_root/script.js"
