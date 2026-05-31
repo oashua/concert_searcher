@@ -37,7 +37,7 @@ else
   exit 0
 fi
 
-pattern='updateDiv\.textContent[[:space:]]*=[[:space:]]*([`"'"']).*?\1[[:space:]]*;'
+pattern="updateDiv\\.textContent[[:space:]]*=[[:space:]]*([\\\`\\\"']).*?\\1[[:space:]]*;"
 replacement="updateDiv.textContent = \\`数据更新时间: ${date_str}\\`;"
 
 if grep -E "updateDiv\.textContent" -n "$script_js" >/dev/null 2>&1; then
