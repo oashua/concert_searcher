@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load data from global variable dbData (defined in data.js)
     if (typeof dbData !== 'undefined') {
         const now = new Date();
-        // 载入时过滤掉结束时间早于当前时间的此项
-        now.setHours(0, 0, 0, 0); // 取今日凌晨，或者不设置直接用当前精确时间
+        // 载入时过滤掉结束时间早于当前时间的此�?
+        now.setHours(0, 0, 0, 0); // 取今日凌晨，或者不设置直接用当前精确时�?
         
         allConcerts = dbData.filter(concert => {
             const timeInfo = parseTimeInfo(concert.time);
@@ -34,7 +34,7 @@ function initialize() {
     if (typeof updateDate !== 'undefined') {
         const updateDiv = document.getElementById('last-update');
         if (updateDiv) {
-            updateDiv.textContent = `数据更新时间: 2026-03-22`;
+            updateDiv.textContent = `数据更新时间: 2026-05-31`;
         }
     }
     
@@ -197,19 +197,19 @@ function renderPagination(current, totalPages) {
     if (totalPages <= 1) return;
     
     const prevBtn = document.createElement('button');
-    prevBtn.textContent = '上一页';
+    prevBtn.textContent = '上一�?;
     prevBtn.disabled = current === 1;
     prevBtn.style.padding = '5px 10px';
     prevBtn.onclick = () => renderPage(current - 1);
     container.appendChild(prevBtn);
     
     const pageInfo = document.createElement('span');
-    pageInfo.textContent = ` 第 ${current} / ${totalPages} 页 `;
+    pageInfo.textContent = ` �?${current} / ${totalPages} �?`;
     pageInfo.style.margin = '0 15px';
     container.appendChild(pageInfo);
     
     const nextBtn = document.createElement('button');
-    nextBtn.textContent = '下一页';
+    nextBtn.textContent = '下一�?;
     nextBtn.disabled = current === totalPages;
     nextBtn.style.padding = '5px 10px';
     nextBtn.onclick = () => renderPage(current + 1);
@@ -235,7 +235,7 @@ function renderResults(concerts, highlightQuery, totalCount) {
     countDiv.textContent = `找到 ${totalCount} 个音乐会`;
 
     if (concerts.length === 0) {
-        list.innerHTML = '<div style="text-align:center; padding: 20px;">没有找到符合条件的音乐会。</div>';
+        list.innerHTML = '<div style="text-align:center; padding: 20px;">没有找到符合条件的音乐会�?/div>';
         return;
     }
 
@@ -257,7 +257,7 @@ function renderResults(concerts, highlightQuery, totalCount) {
         div.innerHTML = `
             <div class="concert-header">
                 <h3 class="concert-title">${concert.name}</h3>
-                <span class="concert-price">￥${concert.price_min} - ${concert.price_max}</span>
+                <span class="concert-price">�?{concert.price_min} - ${concert.price_max}</span>
             </div>
             <div class="concert-details">
                 <div class="detail-item"><strong>城市:</strong> ${concert.city}</div>
