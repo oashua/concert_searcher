@@ -34,7 +34,7 @@ function initialize() {
     if (typeof updateDate !== 'undefined') {
         const updateDiv = document.getElementById('last-update');
         if (updateDiv) {
-            updateDiv.textContent = `\u6570\u636e\u66f4\u65b0\u65f6\u95f4: 2026-05-31`;
+            updateDiv.textContent = 鏁版嵁鏇存柊鏃堕棿: 2026-05-31;
         }
     }
     
@@ -277,3 +277,4 @@ function renderResults(concerts, highlightQuery, totalCount) {
         list.appendChild(div);
     });
 }
+
