@@ -27,7 +27,18 @@ if ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $by
 } elseif ($bytes.Length -ge 2 -and $bytes[0] -eq 0xFE -and $bytes[1] -eq 0xFF) {
     $encoding = [System.Text.Encoding]::BigEndianUnicode
 } else {
-    $encoding = [System.Text.Encoding]::Default
+    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    try {
+        $probe = $utf8NoBom.GetString($bytes)
+        $roundtrip = $utf8NoBom.GetBytes($probe)
+        if ($roundtrip.Length -eq $bytes.Length) {
+            $encoding = $utf8NoBom
+        } else {
+            $encoding = [System.Text.Encoding]::Default
+        }
+    } catch {
+        $encoding = [System.Text.Encoding]::Default
+    }
 }
 
 $content = $encoding.GetString($bytes)
